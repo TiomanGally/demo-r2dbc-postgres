@@ -8,9 +8,4 @@ data class Cache(
         val date: LocalDateTime,
         val system: String,
         @Id val id: Long
-) {
-    /** SQL Queries for querying the database */
-    companion object {
-        const val FIND_ALL = "select * from cache"
-    }
-}
+)

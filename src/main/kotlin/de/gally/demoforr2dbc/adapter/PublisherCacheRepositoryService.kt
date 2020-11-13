@@ -9,8 +9,8 @@ import reactor.core.publisher.Mono
 
 @Component
 class PublisherCacheRepositoryService(
-        private val cacheRepository: CacheRepository
-) : CacheRepositoryService {
+        private val cacheRepository: PostgresCacheRepository
+) : CacheRepositoryService<ServerRequest, ServerResponse> {
 
     override fun findAll(serverRequest: ServerRequest): Mono<ServerResponse> =
             ServerResponse.ok().body(cacheRepository.findAll())

@@ -7,3 +7,4 @@ data class CacheDto(
         val date: LocalDateTime?,
         val system: String?,
 )
+

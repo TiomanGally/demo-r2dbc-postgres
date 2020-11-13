@@ -8,19 +8,24 @@ import reactor.core.publisher.Flux
 import java.time.LocalDateTime
 
 @Service
-class CacheRepository(
+class PostgresCacheRepository(
         private val databaseClient: DatabaseClient,
 ) {
+    /** SQL Queries for querying the database */
+    companion object {
+        const val FIND_ALL = "select * from cache"
+    }
 
     /** Finds all [Cache] from database */
     fun findAll(): Flux<CacheDto> {
         return databaseClient
-                .sql(Cache.FIND_ALL)
+                .sql(FIND_ALL)
                 .map { row, _ ->
-                    val value = row.get("value", String::class.java)
-                    val system = row.get("system", String::class.java)
-                    val date = row.get("date", LocalDateTime::class.java)
-                    CacheDto(value, date, system)
+                    CacheDto(
+                            value = row.get("value", String::class.java),
+                            date = row.get("date", LocalDateTime::class.java),
+                            system = row.get("system", String::class.java),
+                    )
                 }.all()
     }
 }
