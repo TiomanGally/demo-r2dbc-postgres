@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class DemoForR2dbcApplication
 
 fun main(args: Array<String>) {
-	runApplication<DemoForR2dbcApplication>(*args)
+    runApplication<DemoForR2dbcApplication>(*args)
 }
