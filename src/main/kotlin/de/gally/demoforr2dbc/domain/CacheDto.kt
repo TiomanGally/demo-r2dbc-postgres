@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 
 data class CacheDto(
         val value: String?,
-        val date: LocalDateTime?,
         val system: String?,
+        val date: LocalDateTime? = LocalDateTime.now(),
 )
 

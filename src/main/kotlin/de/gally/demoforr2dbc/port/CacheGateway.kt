@@ -18,6 +18,7 @@ class CacheGateway {
         accept(MediaType.APPLICATION_JSON).nest {
             "/cache".nest {
                 GET("/", cacheRepositoryService::findAll)
+                PATCH("/", cacheRepositoryService::save)
             }
         }
     }
